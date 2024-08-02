@@ -1,7 +1,6 @@
 const express = require ('express')
 const http = require('http')
 const { generateUUID } = require('../utils/helpers.js')
-const Helpers = require('../utils/helpers.js')
 
 const pg = require('knex')({
     client: 'pg',
