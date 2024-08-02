@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "nodemon src/index.js",
-    "test": "jest --watchAll --detectOpenHandles",
+    "test": "jest --detectOpenHandles",
     "test-watch": "jest --watchAll --detectOpenHandles"
   },
   "author": "Guillaume DOCHY",
@@ -27,11 +27,11 @@
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0",
     "pg": "^8.8.0",
-    "server.js": "^1.0.0",
-    "supertest": "^6.3.3"
+    "server.js": "^1.0.0"
   },
   "devDependencies": {
-    "chai-http": "^4.4.0",
-    "jest": "^29.7.0"
+    "assert": "^2.1.0",
+    "jest": "^29.7.0",
+    "supertest": "^6.3.4"
   }
 }

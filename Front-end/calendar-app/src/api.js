@@ -2,6 +2,7 @@
 // This code has all the functions of PULL,PUSH, PUT and DELETE incorporated
 
 const API_BASE_URL = 'http://localhost:4000/api'; 
+const {checkEventName, checkEventDescription, checkEventStartDate, checkEventEndDate} = require('./helpers/endpointHelpers.js')
 
 export const fetchEvents = () => {
   return fetch(`${API_BASE_URL}/events`)
@@ -14,7 +15,8 @@ export const fetchEvents = () => {
 };
 
 export const createEvent = (newEvent) => {
-  return fetch(`${API_BASE_URL}/events`, {
+  if(checkEventName(newEvent.title) || checkEventDescription(newEvent.description) || checkEventStartDate(newEvent.start) || checkEventEndDate(newEvent.end)){
+    return fetch(`${API_BASE_URL}/events`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -22,11 +24,18 @@ export const createEvent = (newEvent) => {
     body: JSON.stringify(newEvent),
   })
     .then((response) => response.json())
-    .then((data) => data)
+    .then((data) => data) 
     .catch((error) => {
       console.error('Error creating event:', error);
       throw error;
     });
+  }else{
+      console.status(401).send({message: "name not formatted correctly"})
+      .catch((error) => {
+      console.error('Error creating event:', error);
+      throw error;
+    });
+    }
 };
 
 export const updateEvent = async (eventId, eventData) => {
