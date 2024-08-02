@@ -160,14 +160,17 @@ app.put("/api/events/:id", async (req, res) => {
       priority,
     };
 
-    const result = await eventCollection.findOneAndUpdate(
+    if(checkEventName(event.title) || checkEventDescription(event.description) || checkEventStartDate(event.start) || checkEventEndDate(end)){
+      const result = await eventCollection.findOneAndUpdate(
       { _id: new ObjectId(eventId) },
       { $set: updatedEvent },
       { returnOriginal: false }
     );
-
-    if (!result.value) {
+      if (!result.value) {
       return res.status(404).json({ error: "Event not found" });
+    }
+    }else{
+      res.status(401).send({message: "event not formatted correctly"})
     }
 
     res.json(result.value);

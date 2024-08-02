@@ -1,4 +1,4 @@
-const {checkEventName, checkEventDescription, checkEventStartDate, checkEventEndDate} = require('./../helpers/endpointHelpers.js')
+const { checkEventName, checkEventDescription, checkEventStartDate, checkEventEndDate } = require('../../helpers/endpointHelpers.js');
 
 test("checking event names", () =>{
 

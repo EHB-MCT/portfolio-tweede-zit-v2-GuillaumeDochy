@@ -42,6 +42,7 @@ function checkEventStartDate(start){
         || start.length <= 1 
         || typeof(start) == "string"
         || typeof(start) != "string"
+        || !(startDate instanceof Date)
     ){
         return false
     }
@@ -59,6 +60,7 @@ function checkEventEndDate(end){
         || end.length <= 1 
         || typeof(end) == "string"
         || typeof(end) != "string"
+        || !(endDate instanceof Date)
     ){
         return false
     }
