@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const { MongoClient, ObjectId } = require("mongodb");
+const {checkEventName, checkEventDescription, checkEventStartDate, checkEventEndDate} = require('./helpers/endpointHelpers.js')
 
 app.use(bodyParser.json());
 app.use(
@@ -64,9 +65,12 @@ app.post("/api/events", async (req, res) => {
       priority,
     };
 
-    
+    if(checkEventName(event.title) || checkEventDescription(event.description) || checkEventStartDate(event.start) || checkEventEndDate(end)){
       const result = await eventCollection.insertOne(event);
       res.json(result.ops[0]);
+    }else{
+      res.status(401).send({message: "event not formatted correctly"})
+    }
   } catch (error) {
     res.status(500).json({ error: "Error creating event" });
   }
