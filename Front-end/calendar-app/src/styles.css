@@ -184,3 +184,15 @@ li {
 .event-priority-high {
   background-color: #e74c3c;
 }
+
+.react-calendar__tile--now {
+  background: #348adb;
+  color: #fff;
+  font-weight: bold;
+  border: 2px solid #2980b9;
+}
+
+.react-calendar__tile--active {
+  background: #3477db;
+  color: #fff;
+}
