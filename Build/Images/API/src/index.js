@@ -53,9 +53,9 @@ app.post("/api/events", async (req, res) => {
   try {
     const { title, description, start, end, priority } = req.body;
 
-    if (!title || !description || !start || !end || !priority) {
-      return res.status(400).json({ error: "All fields are required" });
-    }
+    // if (!title || !description || !start || !end || !priority) {
+    //   return res.status(400).json({ error: "All fields are required" });
+    // }
 
     const event = {
       title,
@@ -148,9 +148,9 @@ app.put("/api/events/:id", async (req, res) => {
     const eventId = req.params.id;
     const { title, description, start, end, priority } = req.body;
 
-    if (!title || !description || !start || !end || !priority) {
-      return res.status(400).json({ error: "All fields are required" });
-    }
+    // if (!title || !description || !start || !end || !priority) {
+    //   return res.status(400).json({ error: "All fields are required" });
+    // }
 
     const updatedEvent = {
       title,

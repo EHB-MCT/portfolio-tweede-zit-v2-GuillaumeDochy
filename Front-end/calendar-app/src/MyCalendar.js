@@ -54,6 +54,7 @@ const MyCalendar = () => {
   const handleAddEvent = async (newEvent) => {
     const createdEvent = await createEvent(newEvent);
     setEvents([...events, createdEvent]);
+    window.location.reload();
   };
 
   const handleSelectEvent = (event) => {

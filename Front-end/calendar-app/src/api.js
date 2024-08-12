@@ -48,6 +48,8 @@ export const updateEvent = async (eventId, eventData) => {
       body: JSON.stringify(eventData),
     });
 
+    window.location.reload();
+
     if (!response.ok) {
       throw new Error(`Failed to update event: ${response.status}`);
     }
